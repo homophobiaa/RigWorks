@@ -142,7 +142,7 @@ Core scope to support incrementally:
 
 ### Local development
 
-**Not defined yet.** Until this section is filled in, ask before assuming ports, environment variable names or how the database connection is configured. Development secrets such as connection strings go in .NET user-secrets, never in committed `appsettings` files.
+Local settings approved on 2026-11-15: Vite at `https://localhost:5173`, API at `https://localhost:7443`, and SQL Server Express (`.\SQLEXPRESS`) using Windows authentication with a `RigWorks` development database. The connection key is `ConnectionStrings:RigWorks`, stored in .NET user-secrets, never in committed `appsettings` files. See `docs/development.md` for setup and commands. The authoritative instruction and design files remain in `.claude/`; the layout above is illustrative.
 
 ### Common checks (verify files/scripts exist first)
 

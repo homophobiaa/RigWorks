@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Restore .NET tools
+        run: dotnet tool restore
+      - name: Build backend and generate OpenAPI
+        run: dotnet build RigWorks.sln --configuration Release
+      - name: Test backend HTTP foundations
+        run: dotnet test RigWorks.sln --configuration Release --no-build
+      - name: Check EF model and migrations agree
+        run: >-
+          dotnet ef migrations has-pending-model-changes
+          --project backend/RigWorks.Infrastructure
+          --startup-project backend/RigWorks.Api
+          --configuration Release --no-build
+        env:
+          ConnectionStrings__RigWorks: Server=localhost;Database=SchemaCheck;Integrated Security=True
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+      - name: Check generated API types
+        working-directory: frontend
+        run: |
+          npm run api:generate
+          git diff --exit-code -- src/services/api/schema.d.ts
+      - name: Check design tokens
+        working-directory: frontend
+        run: npm run tokens:check
+      - name: Lint frontend
+        working-directory: frontend
+        run: npm run lint
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build
