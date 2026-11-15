@@ -1,0 +1,39 @@
+/* Alias the self-hosted variable font to DESIGN.md's exact family name. */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: dark;
+  font-family: var(--fonts-ui);
+  color: var(--colors-ink);
+  background: var(--colors-canvas);
+  font-size: var(--typography-body-font-size);
+  line-height: var(--typography-body-line-height);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+h1, h2, p { margin: 0; }
+h1, h2 { overflow-wrap: break-word; }
+h1 {
+  font-size: var(--typography-headline-font-size);
+  font-weight: var(--typography-headline-font-weight);
+  line-height: var(--typography-headline-line-height);
+  letter-spacing: var(--typography-headline-letter-spacing);
+}
+h2 {
+  font-size: var(--typography-card-title-font-size);
+  font-weight: var(--typography-card-title-font-weight);
+  line-height: var(--typography-card-title-line-height);
+  letter-spacing: var(--typography-card-title-letter-spacing);
+}
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--colors-focus-ring); outline-offset: 2px; }

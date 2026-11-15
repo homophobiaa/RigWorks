@@ -1,0 +1,78 @@
+.header {
+  min-height: var(--components-top-nav-height);
+  display: flex;
+  align-items: center;
+  padding-inline: var(--spacing-lg);
+  border-bottom: 1px solid var(--colors-hairline);
+  font-weight: var(--typography-card-title-font-weight);
+}
+
+.main {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+.eyebrow {
+  color: var(--colors-ink-subtle);
+  font-size: var(--typography-eyebrow-font-size);
+  letter-spacing: var(--typography-eyebrow-letter-spacing);
+  margin-bottom: var(--spacing-sm);
+}
+
+.intro {
+  color: var(--colors-ink-muted);
+  font-size: var(--typography-body-lg-font-size);
+  line-height: var(--typography-body-lg-line-height);
+  margin-top: var(--spacing-md);
+  max-width: 60ch;
+}
+
+.panel {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--colors-hairline);
+  border-radius: var(--rounded-lg);
+  background: var(--colors-surface-1);
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.secondary { color: var(--colors-ink-muted); }
+
+.button {
+  justify-self: start;
+  min-height: var(--components-button-primary-min-height);
+  min-width: 24ch;
+  padding: var(--components-button-primary-padding);
+  border: 1px solid var(--colors-primary);
+  border-radius: var(--rounded-md);
+  background: var(--colors-primary);
+  color: var(--colors-on-primary);
+  font-size: var(--typography-button-font-size);
+  font-weight: var(--typography-button-font-weight);
+  line-height: var(--typography-button-line-height);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-quick) var(--motion-easing-productive-standard),
+    border-color var(--motion-duration-quick) var(--motion-easing-productive-standard);
+}
+
+@media (hover: hover) {
+  .button:hover:not(:disabled) { border-color: var(--colors-primary-highlight); }
+}
+
+.button:active:not(:disabled) { background: var(--colors-primary-pressed); }
+.button:disabled {
+  cursor: not-allowed;
+  color: var(--colors-ink-tertiary);
+  background: var(--colors-surface-1);
+  border-color: var(--colors-hairline);
+}
+
+@media (pointer: coarse) {
+  .button { min-height: var(--components-text-input-min-height); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}
