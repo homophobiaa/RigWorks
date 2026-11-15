@@ -8,7 +8,7 @@ if (!frontMatter) throw new Error('DESIGN.md must contain YAML front matter.')
 const design = parse(frontMatter[1])
 const kebab = (name) => name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
 const declarations = []
-const families = { Inter: '{fonts.ui}', 'JetBrains Mono': '{fonts.mono}' }
+const families = { Inter: '{fonts.ui}', Archivo: '{fonts.display}', 'JetBrains Mono': '{fonts.mono}' }
 
 function valueToCss(value) {
   return String(value).replace(/\{([^}]+)\}/g, (_, path) => `var(--${path.split('.').map(kebab).join('-')})`)

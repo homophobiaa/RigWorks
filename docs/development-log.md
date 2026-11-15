@@ -1,5 +1,16 @@
 # Development log
 
+## 2026-11-16 — Design specification v2.0
+
+- Adopted the user's v2.0 design specification and its new test bench; moved the
+  original v1.1 bench into `docs/Design Tech Bench's/` alongside it.
+- Regenerated CSS tokens for the lime/graphite palette and provisional Archivo
+  typography. Mapped Archivo to the specified display-font fallback stack.
+- Updated the existing preview button's hover state to use the new primary-hover
+  token and aligned browser theme metadata with the new canvas colour.
+- Token consistency, frontend lint, typecheck and production build passed. The
+  provisional brand lockup and full visual implementation remain future work.
+
 ## 2026-11-15 — Initial domain database for assignment 4.1
 
 - Read the stage 4.1 instructions and reconstructed individual diploma assignment;

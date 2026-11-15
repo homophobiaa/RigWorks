@@ -58,7 +58,10 @@
 }
 
 @media (hover: hover) {
-  .button:hover:not(:disabled) { border-color: var(--colors-primary-highlight); }
+  .button:hover:not(:disabled) {
+    background: var(--colors-primary-hover);
+    border-color: var(--colors-primary-hover);
+  }
 }
 
 .button:active:not(:disabled) { background: var(--colors-primary-pressed); }

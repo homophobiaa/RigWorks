@@ -1,11 +1,11 @@
 ---
-version: "1.2"
+version: "2.0"
 name: RigWorks
 status: "Project-specific design system, synthesized from public design analyses"
 description: >-
-  A dark, precise PC-configurator interface. Linear supplies the visual foundation:
-  near-black canvas, charcoal surface hierarchy, restrained lavender accent,
-  tight typography and hairline dividers. Raycast contributes compact, fast
+  A dark, precise PC-configurator interface with a lime-green brand accent
+  ("Build a rig that works."). Linear supplies the structural foundation:
+  layered dark surfaces, tight typography, hairline dividers and spacing rhythm. Raycast contributes compact, fast
   application controls and command-palette interaction patterns. Framer
   contributes selective atmospheric showcase treatment. RigWorks motion uses
   the productive/expressive distinction and timing/easing tokens from IBM Carbon.
@@ -17,60 +17,70 @@ sources:
   reduced-motion: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
   animation-performance: "https://web.dev/articles/animations-guide"
 colors:
-  primary: "#5e6ad2"              # fill and border only; never text (3.89-4.44:1 on dark surfaces)
-  primary-pressed: "#4c57b8"      # white text 6.24:1; visibly darker than primary
-  primary-highlight: "#828fff"    # link text, focus ring, selection indicators; never a white-text fill
-  on-primary: "#ffffff"
-  link: "#828fff"                 # 7.27:1 canvas, 6.64:1 surface-1, 6.37:1 surface-2
-  focus-ring: "#828fff"
-  ink: "#f7f8f8"
-  ink-muted: "#d0d6e0"
-  ink-subtle: "#8a8f98"
-  ink-tertiary: "#62666d"         # decorative/disabled only
-  canvas: "#010102"
-  surface-1: "#0f1011"
-  surface-2: "#141516"
-  surface-3: "#18191a"
-  hairline: "#23252a"             # dividers, card edges (decorative)
-  hairline-strong: "#34343a"      # hover/elevated edges
-  control-border: "#62666d"       # edges that identify form controls: 3.30:1 on surface-1
-  inverse-surface: "#ffffff"
-  inverse-surface-hover: "#e8e8e8"    # Raycast's white-pressed value
-  inverse-surface-pressed: "#d6d6d6"  # inverse-ink on it: 12:1
-  inverse-ink: "#18191a"
-  semantic-success: "#27a644"
-  semantic-warning: "#ffc533"
-  semantic-danger: "#ff6161"
-  semantic-info: "#57c1ff"
-  semantic-success-tint: "rgba(39, 166, 68, 0.14)"
-  semantic-warning-tint: "rgba(255, 197, 51, 0.14)"
-  semantic-danger-tint: "rgba(255, 97, 97, 0.14)"
-  semantic-info-tint: "rgba(87, 193, 255, 0.14)"
-  spotlight-violet: "#6a4cf5"
-  spotlight-magenta: "#d44df0"
+  # Brand: lime. Identity, primary action, selection, focus. Never status.
+  primary: "#a3e635"              # 12.1:1 as text on surface-1; fills always carry on-primary text
+  primary-hover: "#bdf26a"        # on-primary text 14.87:1
+  primary-pressed: "#86c21f"      # on-primary text 9.02:1; a visible 1.43:1 step below primary
+  on-primary: "#0b0d12"           # text/icons on lime fills (12.89:1); white on lime fails (1.37:1)
+  primary-tint: "rgba(163, 230, 53, 0.10)"  # rare selected-row wash; ink on it 13.5:1
+  primary-on-light: "#3f6212"     # "Works" on light backgrounds only (7.08:1 on white)
+  link: "#a3e635"
+  focus-ring: "#a3e635"           # 11.4:1 or better on every surface
+  # Neutrals: cool graphite ladder
+  ink: "#f4f4f5"
+  ink-muted: "#c9cdd5"
+  ink-subtle: "#8b919d"           # 4.97:1 or better up to surface-3
+  ink-tertiary: "#646b79"         # decorative/disabled only
+  canvas: "#0b0d12"
+  surface-1: "#12151b"
+  surface-2: "#181b23"
+  surface-3: "#1f232c"
+  hairline: "#272c36"             # dividers, card edges (decorative)
+  hairline-strong: "#363c48"      # hover/elevated edges
+  control-border: "#6b7280"       # edges that identify form controls: 3.25:1 or better on every surface
+  inverse-surface: "#f4f4f5"
+  inverse-surface-hover: "#e2e3e6"
+  inverse-surface-pressed: "#cfd1d6"  # inverse-ink on it: 12.7:1
+  inverse-ink: "#0b0d12"
+  # Semantic status: verdicts only. Hues chosen to stay apart from lime (see Colors)
+  semantic-success: "#34d399"
+  semantic-warning: "#fb923c"
+  semantic-danger: "#f87171"
+  semantic-info: "#60a5fa"
+  semantic-success-tint: "rgba(52, 211, 153, 0.14)"
+  semantic-warning-tint: "rgba(251, 146, 60, 0.14)"
+  semantic-danger-tint: "rgba(248, 113, 113, 0.14)"
+  semantic-info-tint: "rgba(96, 165, 250, 0.14)"
+  # Atmosphere: showcase art only
+  spotlight-lime: "#a3e635"
+  spotlight-blue: "#2563eb"
   overlay: "rgba(0, 0, 0, 0.64)"
 fonts:
   ui: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  display: "Archivo, Inter, ui-sans-serif, system-ui, sans-serif"   # provisional: wordmark, tagline, display-* only
   mono: "'JetBrains Mono', ui-monospace, Consolas, monospace"
 typography:
   display-xl:
-    fontFamily: Inter
+    fontFamily: Archivo
     fontSize: 64px
-    fontWeight: 600
-    lineHeight: 1.08
-    letterSpacing: -0.0375em
+    fontWeight: 650
+    fontStretch: 112%
+    lineHeight: 1.05
+    letterSpacing: -0.02em
   display-lg:
-    fontFamily: Inter
+    fontFamily: Archivo
     fontSize: 48px
-    fontWeight: 600
-    lineHeight: 1.10
-    letterSpacing: -0.031em
+    fontWeight: 650
+    fontStretch: 112%
+    lineHeight: 1.08
+    letterSpacing: -0.015em
   display-md:
-    fontFamily: Inter
+    fontFamily: Archivo
     fontSize: 36px
     fontWeight: 600
+    fontStretch: 112%
     lineHeight: 1.15
-    letterSpacing: -0.025em
+    letterSpacing: -0.01em
   headline:
     fontFamily: Inter
     fontSize: 28px
@@ -119,6 +129,18 @@ typography:
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: 0.033em
+  wordmark:
+    fontFamily: Archivo
+    fontWeight: 700
+    fontStretch: 112%
+    lineHeight: 1
+    letterSpacing: -0.02em
+  tagline:
+    fontFamily: Archivo
+    fontWeight: 500
+    fontStretch: 100%
+    lineHeight: 1.3
+    letterSpacing: -0.005em
   mono:
     fontFamily: JetBrains Mono
     fontSize: 12px
@@ -144,6 +166,10 @@ spacing:
 elevation:
   shadow-popover: "0 8px 24px rgba(0, 0, 0, 0.40)"
   shadow-modal: "0 16px 48px rgba(0, 0, 0, 0.56)"
+effects:
+  spotlight-text-zone: "spotlight-lime at most 6% alpha + spotlight-blue at most 14% where text sits on top (ink-subtle stays 4.56:1 or better)"
+  spotlight-art-zone: "spotlight-lime at most 16% + spotlight-blue at most 18% behind imagery; only ink or ink-muted text there"
+  brand-edge: "1px linear-gradient(90deg, transparent, {colors.primary} 50%, transparent)"
 motion:
   duration-instant: 70ms
   duration-quick: 110ms
@@ -165,6 +191,9 @@ components:
     rounded: "{rounded.md}"
     padding: "10px 14px"
     minHeight: 40px
+  button-primary-hover:
+    backgroundColor: "{colors.primary-hover}"
+    textColor: "{colors.on-primary}"
   button-primary-pressed:
     backgroundColor: "{colors.primary-pressed}"
     textColor: "{colors.on-primary}"
@@ -230,7 +259,7 @@ components:
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
     padding: 16px
-    selectionMark: "check icon + visible 'Selected' label"
+    selectionMark: "plain check glyph (never circle-check) + visible 'Selected' label, both {colors.primary}"
   build-summary:
     backgroundColor: "{colors.surface-1}"
     textColor: "{colors.ink}"
@@ -246,7 +275,7 @@ components:
   command-row-active:
     backgroundColor: "{colors.surface-3}"
     textColor: "{colors.ink}"
-    indicator: "2px leading bar, {colors.primary-highlight}"
+    indicator: "2px leading bar, {colors.primary}"
     rounded: "{rounded.sm}"
     padding: "8px 12px"
   keycap:
@@ -268,6 +297,13 @@ components:
     borderColor: "{colors.hairline}"
     rounded: "{rounded.xl}"
     padding: 32px
+    edge: "optional {effects.brand-edge} along the top edge"
+  brand-lockup:
+    symbol: "provisional interlock mark, height 0.8 x wordmark font-size, {colors.ink} brackets + {colors.primary} core"
+    gap: "0.3 x wordmark font-size"
+    wordmark: "{typography.wordmark}; 'Rig' {colors.ink}, 'Works' {colors.primary}"
+    clearSpace: "half the symbol height on every side"
+    minSize: "wordmark 14px; symbol alone 16px"
   top-nav:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.ink}"
@@ -300,10 +336,10 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.pill}"
     padding: "3px 8px"
-    compatible: "{colors.semantic-success} text + icon on {colors.semantic-success-tint}"
-    conditional: "{colors.semantic-warning} text + icon on {colors.semantic-warning-tint}"
-    incompatible: "{colors.semantic-danger} text + icon on {colors.semantic-danger-tint}"
-    not-evaluated: "{colors.ink-subtle} text + neutral icon on {colors.surface-2}"
+    compatible: "{colors.semantic-success} text + circle-check icon on {colors.semantic-success-tint}"
+    conditional: "{colors.semantic-warning} text + triangle-alert icon on {colors.semantic-warning-tint}"
+    incompatible: "{colors.semantic-danger} text + circle-x icon on {colors.semantic-danger-tint}"
+    not-evaluated: "{colors.ink-subtle} text + dashed-circle icon on {colors.surface-2}"
   comparison-table:
     headerBackground: "{colors.surface-2}"
     columnAltBackground: "{colors.surface-1}"
@@ -322,12 +358,13 @@ components:
     size: 16px
     borderColor: "{colors.control-border}"
     checkedBackground: "{colors.primary}"
-    checkColor: "{colors.on-primary}"
+    checkColor: "{colors.on-primary}"   # dark check on lime
     rounded: "{rounded.xs}"
   toggle:
     track: "{colors.surface-3}"
     trackOn: "{colors.primary}"
     thumb: "{colors.ink}"
+    thumbOn: "{colors.on-primary}"   # ink on lime would be 1.37:1
     borderColor: "{colors.control-border}"
     rounded: "{rounded.pill}"
   range-slider:
@@ -338,7 +375,7 @@ components:
   tabs:
     textColor: "{colors.ink-subtle}"
     activeTextColor: "{colors.ink}"
-    indicator: "2px bottom bar, {colors.primary-highlight}"
+    indicator: "2px bottom bar, {colors.primary}"
     typography: "{typography.body-sm}"
   tooltip:
     backgroundColor: "{colors.surface-3}"
@@ -381,9 +418,9 @@ RigWorks is a PC-configuration web application, not a storefront and not a gener
 
 **Design lineage and authority:**
 
-1. **Linear — primary foundation (dominant).** Use its dark canvas, subtle layered surfaces, lavender-blue action accent, fine borders, 4px spacing rhythm, disciplined typography, and product-first composition. The colour, spacing and radius tokens come directly from its getdesign.md analysis. The type scale keeps Linear's structure and weights, but is reduced by about one step for a dense application; only `headline` is unchanged.
-2. **Raycast — application interaction reference.** Borrow its compact menu/search treatment, command-palette rows, understated selection, keyboard hints, and high-density information presentation. Raycast's category accents also supply the warning, danger and info hues, repurposed here as semantic status colours. Do **not** import Raycast's red brand stripes or replace RigWorks' primary lavender with Raycast's white CTA system.
-3. **Framer — restricted showcase reference.** Borrow the idea of oversized atmospheric gradient tiles and bold, product-led showcases. Do **not** import Framer's blue link/selection accent, loud multi-color card grids, or its proprietary font.
+1. **Linear — primary structural foundation (dominant).** Use its layered dark surfaces, fine borders, 4px spacing rhythm, disciplined typography, and product-first composition. The spacing and radius tokens come directly from its getdesign.md analysis. The UI type scale keeps Linear's structure and weights, reduced by about one step for a dense application. Since v2.0, the colour palette is RigWorks' own (see Brand Identity); Linear's lavender accent and neutral values are no longer used.
+2. **Raycast — application interaction reference.** Borrow its compact menu/search treatment, command-palette rows, understated selection, keyboard hints, and high-density information presentation. Do **not** import Raycast's red brand stripes or replace RigWorks' lime primary with Raycast's white CTA system.
+3. **Framer — restricted showcase reference.** Borrow the idea of oversized atmospheric gradient tiles and bold, product-led showcases, rendered in RigWorks' lime and blue. Do **not** import Framer's palette, blue link/selection accent, loud multi-color card grids, or its proprietary font.
 4. **IBM Carbon — motion-system reference only.** Use its published duration and easing values and its distinction between *productive* and *expressive* motion. Specific RigWorks animation choreography below is intentionally project-specific.
 
 These references are **independent analyses**, not the companies' official design files. This document establishes RigWorks' design decisions; it does not claim that its complete combination appears on any source website.
@@ -393,16 +430,75 @@ These references are **independent analyses**, not the companies' official desig
 - **Feel:** precise, modern, fast, premium, technical but approachable. Hardware is the visual subject; interface chrome supports it.
 - **Theme:** dark exclusively. No auto-generated light variant, white page backgrounds, glassmorphism everywhere, or default Tailwind-looking cards.
 - **Visual priority:** first usability and trust, then delight. Complex compatibility and price information must remain legible at a glance.
-- **Brand identity:** use the name **RigWorks** consistently. Do not invent a final logo, slogan, mascot, or additional brand accent without an explicit design decision.
+- **Brand identity:** **RigWorks**, tagline "Build a rig that works." Lime green is the single brand accent. The wordmark, tagline and symbol rules are in Brand Identity; the symbol and display typeface are provisional. Do not invent a mascot, a second brand accent or alternative slogans.
 - **Interface versus landing page:** the public introduction may be cinematic; the working builder must be calm, direct, and information-dense.
+
+## Brand Identity
+
+### Name and meaning
+
+**RigWorks** is one word with two capitals. It reads three ways, and the identity should support all of them:
+
+1. *Rig* (a PC) + *Works* (an engineering establishment, like a motor works): precise, workshop-grade.
+2. "The rig works": a configurator whose job is making parts work together.
+3. A standalone brand name, not two words glued together.
+
+Lime green carries the second meaning: a working, validated system. That is why lime is the brand colour, and also why it must not be confused with the success *status* colour (see Colors → Brand lime versus success).
+
+### Wordmark
+
+- Set in `{typography.wordmark}`: "Rig" in `{colors.ink}`, "Works" in `{colors.primary}`. On a light background, "Works" uses `{colors.primary-on-light}` and "Rig" uses `{colors.inverse-ink}`.
+- Always one word with capital R and W. Never "Rigworks", "RIGWORKS", "Rig Works" or "Rig-Works", and never split across lines.
+- Never recolour "Rig", outline the letters, add glow, gradients, bevels or italics, or set the wordmark in another typeface.
+- A single-colour version (all `{colors.ink}`, or all `{colors.inverse-ink}` on light) is allowed where two colours can't be reproduced.
+
+### Tagline
+
+- "Build a rig that works." Sentence case, with the full stop. Set in `{typography.tagline}`; the span "works." is `{colors.primary}`, the rest `{colors.ink}` or `{colors.ink-muted}`.
+- The lime word highlight is reserved for the tagline. Do not highlight other words in lime in headlines or copy.
+- Use the tagline on showcase and onboarding surfaces, beside or under the lockup. The working builder's chrome shows the lockup only.
+
+### Symbol
+
+The symbol is **provisional**. Until it is finalized, use the lead exploration below and treat it as replaceable.
+
+- **Lead exploration, "interlock":** two L-shaped brackets that close around a square core, meaning parts that fit together around a working centre. Brackets `{colors.ink}`, core `{colors.primary}`. It is built on a 24-unit grid with 4-unit strokes, so it stays legible at 16px.
+- **Principles for any final symbol:** geometric and drawn on the 4px grid; legible at 16px as a favicon; works in one colour; suggests fit, assembly or engineering; at most one lime element.
+- **Avoid:** literal checkmarks (they collide with selection and success semantics), gears, lightning bolts, flames, claws and other RGB-gaming tropes, PC-tower silhouettes, and anything resembling another company's mark. Check for similarity to existing marks before finalizing.
+
+### Lockup and usage
+
+- Horizontal lockup: symbol, then wordmark (`brand-lockup` in YAML). Symbol height 0.8× the wordmark font size, gap 0.3×, clear space half the symbol height on every side.
+- Minimum sizes: wordmark 14px font size; symbol alone 16px. In the top nav, use an 18–20px wordmark.
+- Lime is used **once** in the lockup (the "Works" half and the symbol core count as one brand moment). Do not add lime elsewhere in the same header.
+
+### Brand typography
+
+- **UI typeface: Inter** (unchanged). Optimized for dense interfaces and tabular numbers.
+- **Display typeface: Archivo, provisional.** Used only for the wordmark, the tagline and `display-xl/lg/md` on showcase and marketing surfaces. At ~112% width, an expanded grotesk reads as industrial and engineered, which fits the "Works" meaning. It is free (OFL) and its variable width axis allows fine tuning. App headings (`headline` and below) stay Inter.
+- Alternatives tested and set aside: Inter (clean but generic as a wordmark), Inter Tight, Geist (strong association with another developer brand), Space Grotesk (widely used, quirky "g"). Confirm Archivo on real screens before finalizing; if it is rejected, display tokens fall back to Inter with the previous tracking.
 
 ## Colors
 
+### Colour hierarchy
+
+| Layer | Tokens | Role | Budget |
+|---|---|---|---|
+| Foundation | `canvas`, `surface-1…3`, `hairline*`, `control-border` | Cool graphite ladder: everything sits on it | Almost all of every screen |
+| Text | `ink`, `ink-muted`, `ink-subtle`, `ink-tertiary` | Hierarchy by brightness, never by hue | All copy |
+| Brand | `primary` and its states, `focus-ring`, `link` | Identity, the primary action, selection, focus | Small: see the lime budget |
+| Status | `semantic-*` and tints | System verdicts only | Only where a verdict exists |
+| Atmosphere | `spotlight-lime`, `spotlight-blue` | Showcase art only | Zero in the working builder |
+
+**Lime budget.** In the working builder, a decision area has at most **one lime-filled element** (its primary action). Lime may also appear as thin indicators: focus ring, selected-card border, active tab or row bar, checked controls, slider range, links. Never use lime for large surfaces, card or section backgrounds, body text, bulk icons, unselected borders, charts or status. If a screen starts to look green, remove lime before adding anything else.
+
 ### Brand & actions
 
-- `{colors.primary}` is the **single brand/action accent**, taken from Linear. Use it as a **fill or border**: primary buttons, selected-component borders, checked controls, slider ranges. It is not a text colour: at 3.89–4.44:1 it fails AA for normal text on RigWorks surfaces.
-- `{colors.primary-highlight}` (#828fff) is the accent's **text and indicator** form: links (`{colors.link}`), focus rings (`{colors.focus-ring}`), active-row bars and tab indicators. Never use it as a fill behind white text (2.87:1). `{colors.primary-pressed}` is the pressed fill.
-- Inverse white buttons (`button-inverse-showcase`) are allowed as rare Raycast/Framer-inspired marketing CTAs. Never mix white and lavender as two competing primary actions in the same view.
+- `{colors.primary}` (lime) is the **single brand/action accent**. As a fill it always carries `{colors.on-primary}` (dark) text and icons; white on lime is 1.37:1 and never allowed. As text or an indicator on dark surfaces it reaches 10.4:1 or better.
+- Primary states: hover `{colors.primary-hover}` (lighter), pressed `{colors.primary-pressed}` (darker). Both keep dark text at 9:1 or better.
+- `{colors.focus-ring}` and `{colors.link}` use the same lime. Links in running text are also underlined, so they never rely on colour alone.
+- `{colors.primary-tint}` is a rare wash for a selected row in dense lists. Never use it for cards or panels.
+- Inverse buttons (`button-inverse-showcase`) are allowed as rare marketing CTAs. Never mix an inverse pill and a lime button as two competing primary actions in the same view.
 
 ### Surfaces and text
 
@@ -419,21 +515,37 @@ These references are **independent analyses**, not the companies' official desig
 - `{colors.semantic-success}` = confirmed compatible or successful action.
 - `{colors.semantic-warning}` = conditional fit, caution, or missing information that matters.
 - `{colors.semantic-danger}` = confirmed incompatibility, blocked operation, or destructive action.
-- `{colors.semantic-info}` = informational status only; it does not compete with the lavender primary action.
+- `{colors.semantic-info}` = informational status. Blue is RigWorks' secondary, technical colour: info status and (deeper, as `spotlight-blue`) showcase atmosphere. It is never a second action colour.
 - Neutral/unchecked states use `{colors.ink-subtle}`, **not green**. Pair every status color with a label and/or icon. Never use color alone to communicate compatibility.
+
+### Brand lime versus success
+
+Lime and success green are related on purpose (both say "it works"), but they mean different things and must never be confused.
+
+| | Brand lime `{colors.primary}` | Success `{colors.semantic-success}` |
+|---|---|---|
+| Meaning | What *you* chose or can do | What RigWorks *verified* |
+| Where | Primary action, selection, focus, wordmark | `compatibility-status`, success toasts, power state |
+| Form | Solid fill (with dark text), thin border or bar, plain check glyph | Tinted pill with circle-check icon **and** a word ("Compatible") |
+| Never | In a status pill, badge or verdict | On a button, selection border, focus ring or brand element |
+
+- The hues are chosen to stay apart: lime sits at 83°, success (emerald) at 158°, warning (orange) at 27°. Measured in OKLab, lime and success differ by ΔE 13–15 under normal, protan and deutan vision. Lime and warning differ by 8.6 even for deuteranopes, where a yellow-amber warning dropped to about 1.4.
+- Because colour-vision deficiency still compresses these differences, the **form** rules above are mandatory: a verdict is always a tinted pill with its own icon and a word; a selection is always a border plus "Selected".
+- Purple and magenta are not part of the palette. They aren't banned from product photography (real RGB lighting), but UI chrome, gradients and illustrations must not introduce them.
 
 ### Atmospheric color
 
-- `{colors.spotlight-violet}` and `{colors.spotlight-magenta}` are borrowed from Framer's gradient vocabulary **only for isolated showcase art**: e.g., a home-page hardware composition or one hero illustration.
-- Use radial spotlights over near-black, capped at **24% alpha for violet and 12% for magenta** wherever text sits on top. At that cap even `ink-subtle` keeps 5.38:1 or better. Reference: `radial-gradient(60% 60% at 70% 30%, rgb(106 76 245 / 0.24), transparent 70%), radial-gradient(40% 40% at 85% 20%, rgb(212 77 240 / 0.12), transparent 70%)`. The colourful area stays spatially confined and fades into the surrounding surface.
+- `{colors.spotlight-lime}` and `{colors.spotlight-blue}` are used **only for isolated showcase art**: a home-page hardware composition, one hero illustration, a finished-build review backdrop.
+- Lime brightens a dark background quickly, so its caps are low. Where text sits on top, use `{effects.spotlight-text-zone}`: lime at most 6% alpha and blue at most 14%, which keeps `ink-subtle` at 4.56:1 or better. Behind imagery with no small text, `{effects.spotlight-art-zone}` allows lime 16% and blue 18%; only `ink` or `ink-muted` text may sit there. Reference: `radial-gradient(60% 60% at 70% 30%, rgb(163 230 53 / 0.06), transparent 70%), radial-gradient(50% 50% at 85% 15%, rgb(37 99 235 / 0.14), transparent 70%)`. The colourful area stays spatially confined and fades into the surrounding surface.
+- `{effects.brand-edge}` is a 1px lime highlight that fades out at both ends. Use it on the top edge of a showcase card, or once for the build-validated moment (see Motion). It is never a border on ordinary cards, inputs or buttons.
 - Animate the atmosphere only by fading the **opacity** of a static gradient layer (`{motion.duration-atmosphere}`, `{motion.easing-expressive-enter}`, once). Never animate gradient stops, `background-position`, `filter: blur()` or `backdrop-filter`; these repaint every frame.
-- No constant animated glow behind catalogs, filters, part specs, compatibility errors, or checkout-like actions. Do not introduce arbitrary cyan/pink/orange brand accents.
+- No constant animated glow behind catalogs, filters, part specs, compatibility errors, or checkout-like actions. Do not introduce arbitrary cyan, pink, purple or orange brand accents, and never put a glow or neon shadow on lime elements.
 
 ## Typography
 
 ### Font family
 
-**Inter** is the practical cross-platform choice: Raycast's analysis uses it, and it is a widely used free alternative to Linear's proprietary families. No text is set below 12px. Load Inter Variable if available, with the system fallback defined in `{fonts.ui}`. The proprietary Linear Display and GT Walsheim fonts are *not* required or assumed available.
+**Inter** is the UI typeface: Raycast's analysis uses it, and it is a widely used free alternative to Linear's proprietary families. **Archivo** (`{fonts.display}`, provisional) is reserved for the wordmark, tagline and `display-*` tokens; see Brand Identity → Brand typography. Load both as variable fonts. Archivo needs its width axis for `fontStretch: 112%`. No text is set below 12px. Load Inter Variable if available, with the system fallback defined in `{fonts.ui}`. The proprietary Linear Display and GT Walsheim fonts are *not* required or assumed available.
 
 Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard hints, and technical snippets. Ordinary spec values and prices stay in Inter with `font-variant-numeric: tabular-nums` when aligned in tables.
 
@@ -441,8 +553,9 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 | Role | Token | Usage |
 |---|---|---|
-| Marketing hero | `{typography.display-xl}` | Short, confident front-page headline only |
-| Section display | `{typography.display-lg}` / `{typography.display-md}` | Major landing or featured sections |
+| Marketing hero | `{typography.display-xl}` (Archivo) | Short, confident front-page headline only |
+| Section display | `{typography.display-lg}` / `{typography.display-md}` (Archivo) | Major landing or featured sections |
+| Brand | `{typography.wordmark}` / `{typography.tagline}` (Archivo) | Lockup and tagline only |
 | App title | `{typography.headline}` | Page title, build title |
 | Component title | `{typography.card-title}` | Hardware name, panel/card header |
 | Supporting introduction | `{typography.body-lg}` | Brief descriptions, onboarding copy |
@@ -450,7 +563,7 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 | Metadata | `{typography.caption}` / `{typography.eyebrow}` | Labels, timestamps, compact supplementary information |
 
 - Use weight 600 for prominent headings and 400 for normal text; avoid defaulting everything to bold.
-- Tight, negative letter-spacing belongs on **large headings**, not tiny specifications.
+- Tight, negative letter-spacing belongs on **large headings**, not tiny specifications. Archivo's expanded width needs less negative tracking than Inter; use the token values.
 - Avoid excessive all-caps, artificial hacker/terminal styling, and decorative monospaced paragraphs.
 - Long single words, model numbers and user-named builds can overflow narrow screens at display sizes. Headings use `overflow-wrap: break-word`. Check every display heading at 360px width.
 - Never compromise legibility to fit a long GPU or motherboard model name. Allow sensible wrapping or intentional truncation with full text on demand.
@@ -478,7 +591,7 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 - Depth is primarily **tonal**: `{colors.canvas}` → `{colors.surface-1}` → `{colors.surface-2}` → `{colors.surface-3}`.
 - Cards and controls use 1px hairlines. Avoid heavy black drop shadows as the main depth signal.
-- Floating layers (menus, popovers, command palettes, toasts) use `{elevation.shadow-popover}`. Modals and drawers use `{elevation.shadow-modal}` over `{colors.overlay}`. On a near-black canvas the shadow is secondary; the `{colors.hairline-strong}` edge does the separating. Never create conspicuous neon shadows.
+- Floating layers (menus, popovers, command palettes, toasts) use `{elevation.shadow-popover}`. Modals and drawers use `{elevation.shadow-modal}` over `{colors.overlay}`. On the dark graphite canvas the shadow is secondary; the `{colors.hairline-strong}` edge does the separating. Never create conspicuous neon shadows.
 - Atmospheric gradients are an illustration technique, **not** elevation. Do not put glass blur on every surface.
 
 ## Shapes & Imagery
@@ -493,7 +606,7 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 ### Buttons & actionable elements
 
-**`button-primary`** — Lavender fill, white text, 8px radius; reserved for the next major action (e.g., add part, save build). One obvious primary action per decision area. Pressed uses `button-primary-pressed`. Hover keeps the fill and adds a 1px inset `{colors.primary-highlight}` edge instead of switching to an inaccessible light fill; keyboard focus uses the shared focus ring, so hover and focus never look alike.
+**`button-primary`** — Lime fill, dark `on-primary` text, 8px radius; reserved for the next major action (e.g., add part, save build). One obvious primary action per decision area. Hover lightens the fill (`button-primary-hover`) and pressed darkens it (`button-primary-pressed`). Keyboard focus uses the shared focus ring with its 2px offset, so the ring sits on the dark background, not against the lime.
 
 **`button-secondary`** — Raised charcoal background with a hairline border; for alternatives, comparison, and supporting actions.
 
@@ -505,10 +618,10 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 | State | Visual rule | Motion |
 |---|---|---|
-| Hover (fine pointer only) | Neutral controls: border one step stronger (`hairline` → `hairline-strong` → `control-border`) plus, where there is a fill, one surface step up. A surface step alone is too faint (about 1.04:1) to count as a hover state. Primary button: fill unchanged, plus a 1px inset `primary-highlight` edge. Quiet button: text `ink-muted` → `ink`, background `surface-2`. Inverse showcase button: `inverse-surface-hover`. | `duration-quick`, productive-standard |
+| Hover (fine pointer only) | Neutral controls: border one step stronger (`hairline` → `hairline-strong` → `control-border`) plus, where there is a fill, one surface step up. A surface step alone is too faint (about 1.04:1) to count as a hover state. Primary button: `primary-hover` fill. Quiet button: text `ink-muted` → `ink`, background `surface-2`. Inverse showcase button: `inverse-surface-hover`. | `duration-quick`, productive-standard |
 | Pressed | Primary: `primary-pressed`. Inverse showcase: `inverse-surface-pressed`. Neutral: back to the default surface. Standalone buttons may use `scale(0.98)`; in-row controls may not. | `duration-instant` |
 | Focus-visible | `outline: 2px solid {colors.focus-ring}; outline-offset: 2px` on every control. Text inputs also switch the border to `primary`. Never removed, and shown together with hover when both apply. | Appears instantly |
-| Selected / active | Always a visible text or icon change, plus an indicator of 3:1 or better: `primary` border (cards), `ink-subtle` border and check icon (chips), 2px `primary-highlight` bar (rows, tabs). | `duration-short` |
+| Selected / active | Always a visible text or icon change, plus an indicator of 3:1 or better: `primary` border (cards), `ink-subtle` border and check icon (chips), 2px `primary` bar (rows, tabs). | `duration-short` |
 | Disabled | Text and icons `ink-tertiary`, background `surface-1`, border `hairline`, no hover, `cursor: not-allowed`. Quiet buttons stay transparent and borderless, changing only their text. Never shown by opacity alone. If a reason exists ("Select a CPU first"), show it next to the control or in a tooltip. | None |
 | Pending | Label stays; a 16px spinner replaces the leading icon; width is locked so nothing shifts; repeat activation is blocked. | Spinner only |
 | Error | Border `semantic-danger`, plus an icon and a message in words below the field. | Appears instantly; no shake |
@@ -519,23 +632,23 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 **`part-card-hover`** — Border strengthens to `hairline-strong`; the surface does not change, so hover never resembles selection.
 
-**`part-card-selected`** — The same geometry, one surface notch higher, a `primary` border (3.89:1), and a check icon with a visible "Selected" label. Do not enlarge selected cards enough to reflow a whole catalog.
+**`part-card-selected`** — The same geometry, one surface notch higher, a lime `primary` border (11.4:1), and a plain check glyph with a visible "Selected" label. The plain check is reserved for selection; compatibility uses the circle-check inside a status pill. Do not enlarge selected cards enough to reflow a whole catalog.
 
 **`spec-row`** — Thin divider, muted label on one side, readable aligned value on the other. Use tabular numbers for aligned numeric values. Long values wrap or reveal details instead of vanishing behind clipping.
 
-**`filter-chip`** / **`filter-chip-active`** — Raycast-inspired compact neutral chips. The active state adds a leading check icon, `ink` text and an `ink-subtle` border (5.4:1 or better), so it reads at a glance while staying neutral; filters should not turn into a wall of glowing purple pills.
+**`filter-chip`** / **`filter-chip-active`** — Raycast-inspired compact neutral chips. The active state adds a leading check icon, `ink` text and an `ink-subtle` border (5.4:1 or better), so it reads at a glance while staying neutral; filters should not turn into a wall of glowing green pills.
 
-**`text-input`** — Surface-2 dark field, 1px `control-border` edge, readable placeholder, 44px target. Focus adds lavender border/focus ring. Error/valid states supplement rather than replace clear messages.
+**`text-input`** — Surface-2 dark field, 1px `control-border` edge, readable placeholder, 44px target. Focus adds the lime border and focus ring. Error/valid states supplement rather than replace clear messages. Field messages sit below the field, in the semantic colour of their meaning (danger, warning, success or info) with the matching icon; only an error also changes the border.
 
-**`select`** / **`checkbox`** / **`toggle`** / **`range-slider`** / **`tabs`** — Compact form controls for filters (socket, chipset, price and wattage ranges, grid/list view). They share `control-border` edges, a `primary` fill when checked or on, and the shared state model. Range values are shown as text with tabular numbers, never only by thumb position. In narrow rails, keep option labels short and put the category in the field label ("Power supply" → "750 W"), so selected values never truncate.
+**`select`** / **`checkbox`** / **`toggle`** / **`range-slider`** / **`tabs`** — Compact form controls for filters (socket, chipset, price and wattage ranges, grid/list view). They share `control-border` edges, a lime `primary` fill when checked or on (with a dark check mark or thumb), and the shared state model. Range values are shown as text with tabular numbers, never only by thumb position. In narrow rails, keep option labels short and put the category in the field label ("Power supply" → "750 W"), so selected values never truncate.
 
 ### Builder status & summary
 
 **`build-summary`** — A bordered charcoal panel showing selected categories, major identifiers, known total, and compatibility overview. A missing selection is explicit and neutral. A total that cannot be computed is labeled unknown or partial, never a fake €0.
 
-**`compatibility-status`** — Four distinct semantic states: *compatible*, *incompatible*, *conditional*, *not evaluated*. The text identifies the basis of the result or explains what is missing. An incompatibility should lead to a comprehensible detail/next action, not just a red dot. Each state uses its semantic colour as text and icon on the matching tint.
+**`compatibility-status`** — Four distinct semantic states: *compatible*, *incompatible*, *conditional*, *not evaluated*. The text identifies the basis of the result or explains what is missing. An incompatibility should lead to a comprehensible detail/next action, not just a red dot. Each state uses its semantic colour as text and icon on the matching tint, with a distinct icon per state (circle-check, triangle-alert, circle-x, dashed circle). Never use brand lime here.
 
-**`power-estimate`** — Shows estimated system draw against the selected PSU's rating, as a bar plus words, e.g. "≈ 520 W estimated · 750 W PSU · 31% headroom". The headroom *thresholds* come from the product specification. This component only maps their result to the four `compatibility-status` states. No PSU selected, or missing wattage data, shows *not evaluated*, never an empty green bar.
+**`power-estimate`** — Shows estimated system draw against the selected PSU's rating, as a bar plus words, e.g. "≈ 520 W estimated · 750 W PSU · 31% headroom". The headroom *thresholds* come from the product specification. This component only maps their result to the four `compatibility-status` states. No PSU selected, or missing wattage data, shows *not evaluated*, never an empty green bar. The bar uses semantic colours, never brand lime.
 
 **`price-total`** — Format through the app's shared number formatter, never by hand. If some parts lack prices, show "Partial total · 6 of 8 parts priced". Going over a user budget is a **warning**, with the amount over stated ("€85 over budget"). It is never *danger*, which is reserved for incompatibility.
 
@@ -545,7 +658,7 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 ### Navigation & search
 
-**`top-nav`** — Approximately 56px tall, dark continuous surface, restrained bottom rule, RigWorks wordmark, relevant top-level destinations and a clear current-page state. No excessive marketing links in the builder.
+**`top-nav`** — Approximately 56px tall, dark continuous surface, restrained bottom rule, the RigWorks brand lockup (no tagline), relevant top-level destinations and a clear current-page state. No excessive marketing links in the builder.
 
 **`command-palette`** — Borrow Raycast's compact search-and-command model: dark floating panel, search input, grouped actionable rows, selected row one level lighter, optional keyboard shortcuts displayed as `keycap`. Use only if actual navigation/actions support it; not as a nonfunctional demo.
 
@@ -555,7 +668,7 @@ Use `{fonts.mono}` sparingly for part numbers, code-like identifiers, keyboard h
 
 ### Marketing/showcase
 
-**`showcase-card`** — Framer-inspired atmospheric tile used sparingly among otherwise monochrome cards. One focal product composition or authentic UI preview, subtle lavender/violet spotlight, a strong short heading and minimal text. It is *not* a template for catalog cards.
+**`showcase-card`** — Framer-inspired atmospheric tile used sparingly among otherwise monochrome cards. One focal product composition or authentic UI preview, a lime/blue spotlight within the `effects` caps, an optional brand edge, a strong short heading and minimal text. It is *not* a template for catalog cards.
 
 **`empty-state`** — Useful explanation plus a real next action. A small category illustration is acceptable; full cinematic effects are not necessary for routine empty results.
 
@@ -619,7 +732,7 @@ Use productive easing for most actions. Use expressive easing only when the larg
 
 **Page transitions (productive):** 150–240ms, optional slight fade/translation of *nonpersistent* content; navigation, headings and key controls should feel stable. Do not force full-screen page wipe animations for every builder step.
 
-**Hero / feature showcase (expressive):** a restrained 240–400ms staged reveal of heading and real product visual, with optional slowly settling violet/magenta atmospheric glow (up to 700ms, once on entry). No infinite marquee of effects competing with the CTA. The first meaningful content must not depend on the animation finishing.
+**Hero / feature showcase (expressive):** a restrained 240–400ms staged reveal of heading and real product visual, with an optional slowly settling lime/blue atmospheric glow (up to 700ms, once on entry). No infinite marquee of effects competing with the CTA. The first meaningful content must not depend on the animation finishing.
 
 **Completed-build reveal (expressive):** an optional single 400ms coordinated transition bringing the selected components into an attractive review composition; preserve exact component identity and data. Provide an immediate, static equivalent.
 
@@ -630,10 +743,12 @@ These are **project-specific interaction patterns**, constrained by the source-b
 - **Part-detail reveal:** when opening a real part inspector, preserve the image and title as continuous visual anchors while details appear over 240–400ms. A simple slide/fade is preferable to a fragile shared-element animation if layouts or image dimensions differ.
 - **Part-to-build handoff:** after selecting a component, the source card registers selection immediately and its corresponding summary slot receives a brief, coordinated 150–240ms reveal. An optional restrained image handoff is allowed only when it is smooth, accurate, and does not shift surrounding rows.
 - **Finished-build composition:** on the dedicated build-review surface, real selected components may assemble into a unified product presentation once (400ms). No fabricated 3D representation, no looping celebration, and no dependency on motion for comprehending the result.
+- **Brand assembly (showcase only):** on the landing hero, the symbol's two brackets slide 4px into place around the core, then the lime core and wordmark fade in (emphasis, expressive-enter, once). Never replay it on app navigation. Under reduced motion the lockup appears complete.
+- **Build validated:** when a build changes into a state where every evaluated check is compatible, the summary shows the success status in words ("All checks passed"). A single `brand-edge` highlight then crosses the summary's top edge once (emphasis, expressive-standard). It does not repeat while the build stays valid, never loops, and is skipped under reduced motion. The success *status* carries the meaning; the lime edge is the brand flourish, tied to "the rig works".
 
 **Productive signatures.** These repeat many times per session, so each finishes within 240ms and never delays data.
 
-- **Slot fill:** the new content in the summary slot enters with opacity 0→1 and translateY 4px→0 (short, productive-enter). The slot border fades from `primary-highlight` back to `hairline` over standard. The price total updates in the same frame.
+- **Slot fill:** the new content in the summary slot enters with opacity 0→1 and translateY 4px→0 (short, productive-enter). The slot border fades from `primary` back to `hairline` over standard. The price total updates in the same frame.
 - **Selection mark:** the check icon enters with opacity and scale 0.8→1 (short, productive-enter). No overshoot, and never from scale 0.
 - **Compatibility change:** the label, icon and tint switch with the data. The row may fade in its new tint over short. Persistent states (incompatible, conditional) keep their tint; nothing flashes or pulses.
 - **Power bar:** the fill is a full-width element scaled with `transform: scaleX(load / capacity)` from the left (standard, productive-standard). The state label changes immediately, not when the bar arrives.
@@ -683,9 +798,9 @@ These are layout **guides**, not a mandate to implement brittle device categorie
 
 ## Accessibility & Content Integrity
 
-- Aim for WCAG AA readability: normal text ≥4.5:1 and essential non-text indicators ≥3:1. The primary lavender fill with white text is suitable (4.70:1), but `{colors.primary-highlight}` must **not** become a white-text fill, and `{colors.primary}` is not a text colour; links use `{colors.link}`.
+- Aim for WCAG AA readability: normal text ≥4.5:1 and essential non-text indicators ≥3:1. Lime fills always use dark `{colors.on-primary}` text (9:1 or better across states); white on lime (1.37:1) is never allowed. Lime as text, link or focus ring on dark surfaces is 10.4:1 or better.
 - Keep readable labels, keyboard focus order, accessible names, form error text and screen-reader announcements for consequential changes.
-- Semantic statuses must be expressed in words, not only icons, hue, or motion.
+- Semantic statuses must be expressed in words, not only icons, hue, or motion. This matters doubly with a green brand: brand lime and success green must stay distinguishable by form and wording, not hue alone (see Colors → Brand lime versus success).
 - Do not render unsupported claims of compatibility, price, availability or performance as visually authoritative. If the data is unavailable, design the unknown/partial state explicitly.
 - Icons should come from a coherent icon set with consistent stroke treatment. Decorative 3D/gradient imagery should not pretend to communicate verified hardware properties.
 - UI copy is English. Labels, buttons and table cells must survive long strings (part names, user-named builds) without clipping.
@@ -694,8 +809,9 @@ These are layout **guides**, not a mandate to implement brittle device categorie
 
 ### Do
 
-- Start every screen with Linear's near-black canvas, readable text hierarchy and tonal surface ladder.
-- Keep the primary lavender accent scarce and meaningful.
+- Start every screen with the graphite canvas, readable text hierarchy and tonal surface ladder.
+- Keep lime scarce and meaningful: one lime fill per decision area, plus thin indicators.
+- Use the wordmark, tagline and symbol exactly as specified in Brand Identity.
 - Treat hardware imagery and authentic interface previews as the visual center.
 - Borrow Raycast's command/search clarity, keyboard hints and understated active rows when relevant.
 - Reserve Framer-style atmospheric gradients for an occasional showcase moment.
@@ -705,9 +821,10 @@ These are layout **guides**, not a mandate to implement brittle device categorie
 
 ### Don't
 
-- Turn the whole site into a glowing violet gradient, or mix unrelated saturated accents.
+- Drift into neon-green RGB-gaming styling: glowing edges, lime body text, green-on-green panels, lime gradients behind content. Don't mix unrelated saturated accents, and don't reintroduce purple.
+- Use brand lime to communicate compatibility, or success green for actions and selection.
 - Build a generic dashboard made of huge, identical rounded metric cards.
-- Copy Linear/Raycast/Framer logos, proprietary fonts, brand illustrations or page layouts verbatim.
+- Copy Linear/Raycast/Framer logos, proprietary fonts, brand illustrations or page layouts verbatim, or design a symbol that resembles another company's mark.
 - Use animations to conceal loading, delay component selection, or repeatedly celebrate basic actions.
 - Override accessibility focus, text contrast, semantics or reduced-motion settings for aesthetics.
 - Infer technical facts from decorative imagery or pretend missing data has been validated.
@@ -718,7 +835,7 @@ These are layout **guides**, not a mandate to implement brittle device categorie
 1. Treat this file as the visual specification. If an implementation choice conflicts with a token or explicit rule, follow the rule unless a concrete accessibility or usability issue requires adaptation.
 2. Build tokens first, then shared buttons/fields/cards, then page-specific layouts. Do not duplicate the same design values in unrelated CSS files.
 3. Decide whether a new screen is a *working application surface* or a *showcase*. The former defaults to restrained Linear/Raycast language; the latter may use the limited Framer vocabulary.
-4. When adding a component, reuse a named variant or define one consistent new variant. Never generate a different corner radius, purple, shadow or animation on a whim.
+4. When adding a component, reuse a named variant or define one consistent new variant. Never generate a different corner radius, accent colour, shadow or animation on a whim.
 5. Verify states: normal, hover, focus, active, disabled, loading, empty, error, conditional and unknown where applicable.
 6. Check narrow widths, long part and build names, keyboard operation, visible status labels, reduced-motion mode and contrast.
 7. Profile nontrivial effects on real hardware. If motion causes visible dropped frames or input lag, simplify it.
@@ -726,10 +843,11 @@ These are layout **guides**, not a mandate to implement brittle device categorie
 
 ## Known Gaps & Boundaries
 
-- The **underlying visual tokens** are predominantly from Linear; Raycast/Framer patterns are selective. This is a designed synthesis, **not** a claimed extraction of a live RigWorks UI.
+- The **structural tokens** (spacing, radii, type-scale structure) are predominantly from Linear; Raycast/Framer patterns are selective. Since v2.0 the colour palette is RigWorks' own. This is a designed synthesis, **not** a claimed extraction of a live RigWorks UI.
 - The exact layout for every future feature is not dictated here. New pages should derive their styling from these foundations rather than introducing another visual language.
-- Custom logo, icon, imagery library, illustration assets, chart palette and any true 3D hardware viewer have not been chosen; do not fabricate them as if already approved.
+- The **symbol is provisional** (lead exploration: interlock) and the **display typeface is provisional** (Archivo). Icon set, imagery library, illustration assets, chart palette and any true 3D hardware viewer have not been chosen; do not fabricate them as if already approved.
 - Source documents predominantly analyze **marketing pages**. RigWorks-specific configurator controls and their choreography are explicitly derived adaptations, not source-company components.
-- **RigWorks decisions added in v1.1** (not taken from any source document, chosen and contrast-checked for this project): `primary-pressed` #4c57b8; the link and focus-ring role for #828fff; `control-border`; the 14% semantic tints; the overlay opacity; both `elevation` shadows; the 24%/12% spotlight caps; the interaction-state model; the easing-assignment table (it applies Carbon's standard/enter/exit rule, but the event mapping is RigWorks'); the productive signature motions and the 30ms stagger; and the em-based tracking. Revise them through the same process as any other token.
+- **RigWorks decisions from v1.1 that remain in force:** `control-border`, the 14% semantic tints, the overlay opacity, both `elevation` shadows, the interaction-state model, the easing-assignment table (it applies Carbon's standard/enter/exit rule, but the event mapping is RigWorks'), the productive signature motions and the 30ms stagger, and em-based tracking. Their v1.1 colour values were superseded in v2.0.
+- **RigWorks decisions in v2.0:** the lime brand palette and its states, the graphite neutral ladder, the semantic hues (chosen for contrast and colour-vision separation from lime; the hex values coincide with steps of Tailwind CSS's default palette, but no Tailwind system is implied), the spotlight colours and caps, `brand-edge`, the lime budget, the brand-lime-versus-success rules, the Brand Identity section, the provisional Archivo display tokens, and the brand-assembly and build-validated moments. Contrast figures in this file were computed for these values.
 - Some component fields are descriptions rather than values (for example `selectionMark`, `indicator`, `track`, `fill`). They tell implementers what to build; they are not machine-readable tokens.
 - This file defines appearance and interaction behavior, **not** compatibility algorithms, application architecture, feature completion, or test assertions. Those belong in product specifications and engineering documentation.
