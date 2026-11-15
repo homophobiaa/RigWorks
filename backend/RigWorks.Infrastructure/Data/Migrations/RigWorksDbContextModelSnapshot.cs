@@ -155,6 +155,106 @@ namespace RigWorks.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("RigWorks.Domain.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Brands", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Brands_Name_NotBlank", "LEN(LTRIM(RTRIM([Name]))) > 0");
+                        });
+                });
+
+            modelBuilder.Entity("RigWorks.Domain.Entities.Component", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(32)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<decimal?>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("Category");
+
+                    b.ToTable("Components", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Components_Category", "[Category] IN ('Cpu', 'Gpu', 'Motherboard', 'Memory', 'Storage', 'PowerSupply', 'Case', 'Cooling')");
+
+                            t.HasCheckConstraint("CK_Components_Name_NotBlank", "LEN(LTRIM(RTRIM([Name]))) > 0");
+
+                            t.HasCheckConstraint("CK_Components_Price_NonNegative", "[Price] IS NULL OR [Price] >= 0");
+                        });
+                });
+
+            modelBuilder.Entity("RigWorks.Domain.Entities.PcBuild", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("Budget")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PcBuilds", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_PcBuilds_Budget_NonNegative", "[Budget] IS NULL OR [Budget] >= 0");
+
+                            t.HasCheckConstraint("CK_PcBuilds_Name_NotBlank", "LEN(LTRIM(RTRIM([Name]))) > 0");
+                        });
+                });
+
             modelBuilder.Entity("RigWorks.Infrastructure.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -269,6 +369,36 @@ namespace RigWorks.Infrastructure.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RigWorks.Domain.Entities.Component", b =>
+                {
+                    b.HasOne("RigWorks.Domain.Entities.Brand", "Brand")
+                        .WithMany("Components")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("RigWorks.Domain.Entities.PcBuild", b =>
+                {
+                    b.HasOne("RigWorks.Infrastructure.Identity.ApplicationUser", null)
+                        .WithMany("Builds")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RigWorks.Domain.Entities.Brand", b =>
+                {
+                    b.Navigation("Components");
+                });
+
+            modelBuilder.Entity("RigWorks.Infrastructure.Identity.ApplicationUser", b =>
+                {
+                    b.Navigation("Builds");
                 });
 #pragma warning restore 612, 618
         }
