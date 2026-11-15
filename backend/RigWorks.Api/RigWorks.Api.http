@@ -1,0 +1,13 @@
+@RigWorks.Api_HostAddress = https://localhost:7443
+
+GET {{RigWorks.Api_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+GET {{RigWorks.Api_HostAddress}}/api/auth/csrf
+
+###
+
+GET {{RigWorks.Api_HostAddress}}/api/auth/me
+Accept: application/json
