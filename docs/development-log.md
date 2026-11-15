@@ -1,5 +1,35 @@
 # Development log
 
+## 2026-11-15 — Initial domain database for assignment 4.1
+
+- Read the stage 4.1 instructions and reconstructed individual diploma assignment;
+  kept this task limited to the initial database foundation.
+- Reused the single SQL Server/Identity context, role stores, DI and user-secret
+  configuration. Preserved the published/applied `InitialIdentity` migration.
+- Added Domain entities Brand, Component and PcBuild plus ComponentCategory.
+  Domain still has no EF Core or Identity dependency. Added Infrastructure
+  configurations, DbSets and the Identity user's collection navigation for builds.
+- Added nullable EUR decimal(18,2) amounts, non-negative checks, required/nonblank
+  names, a unique brand-name index, category validation and required foreign keys.
+  Referenced brands and users with builds cannot be accidentally cascade-deleted.
+- Generated and applied `20261115203533_InitialCreate` to the existing local
+  RigWorks database. It adds only Brands, Components and PcBuilds; Identity tables
+  remain intact. Fresh databases will apply both migrations in sequence.
+- Documented the schema and repeatable SQL verification script. Confirmed the
+  planned role names User, CatalogEditor and Admin; no users or roles are seeded.
+- Restore, Release build (zero warnings/errors), context discovery, model/migration
+  consistency and all four existing tests passed. Used Release because the
+  running Debug preview held build outputs open.
+- Verified real SQL Server tables, columns, primary/foreign keys and indexes.
+  Transactional SQL checks passed for NULL/zero/decimal EUR amounts, negative
+  amount rejection, unique/nonblank brands, category validation, missing-FK
+  rejection and restrictive deletes. All verification fixtures were rolled back;
+  no users, roles, brands, components or builds remain in the local database.
+- No frontend/API feature, authentication workflow, role policy, selected-component
+  association, specifications, compatibility rule or catalog seed was added.
+  The database implementation and its verification/documentation are grouped
+  separately for the commit and push requested on 2026-11-16.
+
 ## 2026-11-15 — Stack initialization
 
 - Initialized the React/TypeScript/Vite SPA and .NET 10 controller API in one

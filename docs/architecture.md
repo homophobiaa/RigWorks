@@ -6,8 +6,8 @@ RigWorks is a modular monolith with a separate client-rendered SPA.
   custom properties implement `.claude/DESIGN.md`. Motion for React respects the
   user's reduced-motion preference. Unstyled Radix primitives will be installed
   when a component first needs one.
-- `RigWorks.Domain`: independent business model and rules. Initially empty;
-  catalog and compatibility models will be introduced with working features.
+- `RigWorks.Domain`: independent business model and rules. Contains `Brand`,
+  `Component`, `PcBuild` and `ComponentCategory`; no EF Core or Identity dependency.
 - `RigWorks.Application`: use cases and abstractions; references Domain.
 - `RigWorks.Infrastructure`: SQL Server persistence and Identity; references
   Application and transitively Domain. Identity users stay outside Domain.
@@ -50,7 +50,11 @@ Migrations are applied explicitly with the EF tool, never automatically on boot.
 
 ## Next implementation decisions
 
-Confirm the assignment's three role names and permissions before implementing
-authorization policies. Add the first catalog entities and verified data with the
-catalog feature. Compatibility remains deterministic and server-authoritative;
+The planned roles are `User`, `CatalogEditor`, and `Admin`; confirm permissions
+before implementing authorization policies or seeding roles. Expand the initial
+catalog/build schema with specifications and selected components in later
+migrations. Compatibility remains deterministic and server-authoritative;
 unknown data must remain unknown. No product specifications or prices are seeded.
+
+See [the initial database schema](database.md) for entities, relationships and
+verification commands.

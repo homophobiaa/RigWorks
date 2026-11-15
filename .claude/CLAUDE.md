@@ -126,7 +126,7 @@ Core scope to support incrementally:
 
 ## Academic and implementation requirements
 
-- Preserve the assigned **three-role** authorization requirement; roles must have demonstrably distinct permissions. Final role names and capabilities follow the assignment and actual implementation, not guesses.
+- Preserve the assigned **three-role** authorization requirement; planned role names confirmed by the user are `User`, `CatalogEditor`, and `Admin`. Identity stores support them; permissions, policies and role seeding are deferred until their implementation task.
 - The final solution must demonstrate at least five meaningful entities/models, views or screens, and controllers/endpoints as required by the official documents. Do not create fake entities to inflate counts.
 - Use a genuine, explainable design pattern where it improves the implementation; do not add patterns or layers for decoration.
 - Maintain meaningful automated tests of business logic, especially compatibility rules, unknown-data handling, budgets, and permissions. Follow any documented coverage threshold; verify the report before claiming it was achieved.

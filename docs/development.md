@@ -32,8 +32,9 @@ database in the connection string. Trusting the local server certificate is
 acceptable for this development instance. Store connection strings only in
 user-secrets; never commit credentials or add them to frontend environment files.
 
-The current machine's user-secret and initial Identity migration were configured
-and applied during initialization. Other machines need the first-setup steps.
+The current machine's user-secret was configured during initialization. The
+database includes the Identity migration and the `InitialCreate` domain migration.
+Other machines need the first-setup steps. See [database schema and verification](database.md).
 
 ## Run
 
